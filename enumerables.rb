@@ -1,4 +1,8 @@
 # Enumerable module.
+$proc= proc do |n|
+  n * 2
+end
+
 module Enumerable
   def my_each
     for i in 0..self.length-1
@@ -66,20 +70,37 @@ module Enumerable
 
   def my_map
     arr = []
-    self.my_each do |ele|
-      arr << yield(ele)
+    if $proc
+      self.my_each do |ele|
+        arr << $proc.call(ele)
+      end
+      return arr
+    end
+    if block_given?
+      self.my_each do |ele|
+        arr << yield(ele)
+      end
     end
     arr
   end
 
-  def my_inject(acc = 0)
+  def my_inject(acc = self[0])
     self.my_each do |ele|
+      if ele == acc
+        next
+      else
       acc = yield(acc, ele)
+      end
     end
     acc
   end
 
-  
+  def multiply_els
+    total = self.my_inject{ |acc, ele| acc * ele}
+    total
+  end
+
+
 
 end
 
@@ -135,7 +156,7 @@ puts '------------------------------'
 
 # Test my_map
 puts 'Test my_map'
-my_m = arr.my_map { |n| n * 2}
+my_m = arr.my_map { |n| n * 4}
 print my_m
 puts
 puts '------------------------------'
@@ -144,3 +165,7 @@ puts '------------------------------'
 puts 'Test my_inject'
 my_i = arr.my_inject { |acc, ele| acc + ele}
 puts my_i
+puts [2, 5, 4].multiply_els
+
+
+

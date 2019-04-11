@@ -99,9 +99,6 @@ module Enumerable
     total = self.my_inject{ |acc, ele| acc * ele}
     total
   end
-
-
-
 end
 
 # Test Case

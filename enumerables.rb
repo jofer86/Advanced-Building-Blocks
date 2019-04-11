@@ -94,11 +94,11 @@ module Enumerable
     end
     acc
   end
+end
 
-  def multiply_els
-    total = my_inject{ |acc, ele| acc * ele}
-    total
-  end
+def multiply_els(arr)
+  total = arr.my_inject{ |acc, ele| acc * ele }
+  total
 end
 
 # Test Case
@@ -156,7 +156,7 @@ puts '------------------------------'
 puts 'Test my_inject'
 my_i = arr.my_inject { |acc, ele| acc + ele}
 puts my_i
-puts [2, 5, 4].multiply_els
+puts multiply_els([2, 5, 4])
 
 
 

@@ -20,7 +20,7 @@ module Enumerable
 
   def my_select
     arr = []
-    self.my_each do |ele|
+    my_each do |ele|
       if yield(ele) == true
         arr << ele
       end
@@ -30,7 +30,7 @@ module Enumerable
 
   def my_all?
     all = true
-    self.my_each do |ele|
+    my_each do |ele|
       if yield(ele) == false
         return false
       end
@@ -40,7 +40,7 @@ module Enumerable
 
   def my_any?
     any = false
-    self.my_each do |ele|
+    my_each do |ele|
       if yield(ele) == true
         return true
       end
@@ -50,7 +50,7 @@ module Enumerable
 
   def my_none?
     none = true
-    self.my_each do |ele|
+    my_each do |ele|
       if yield(ele) == true
         return false
       end
@@ -60,7 +60,7 @@ module Enumerable
 
   def my_count
     count = 0
-    self.my_each do |ele|
+    my_each do |ele|
       if yield(ele) == true
       count += 1
       end
@@ -71,13 +71,13 @@ module Enumerable
   def my_map
     arr = []
     if $proc
-      self.my_each do |ele|
+      my_each do |ele|
         arr << $proc.call(ele)
       end
       return arr
     end
     if block_given?
-      self.my_each do |ele|
+      my_each do |ele|
         arr << yield(ele)
       end
     end
@@ -85,7 +85,7 @@ module Enumerable
   end
 
   def my_inject(acc = self[0])
-    self.my_each do |ele|
+    my_each do |ele|
       if ele == acc
         next
       else
@@ -96,7 +96,7 @@ module Enumerable
   end
 
   def multiply_els
-    total = self.my_inject{ |acc, ele| acc * ele}
+    total = my_inject{ |acc, ele| acc * ele}
     total
   end
 end

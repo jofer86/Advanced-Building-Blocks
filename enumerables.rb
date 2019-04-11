@@ -1,8 +1,8 @@
-# Enumerable module.
+
 $proc= proc do |n|
   n * 2
 end
-
+# Enumerable module.
 module Enumerable
   def my_each
     for i in 0..self.length-1

@@ -72,6 +72,15 @@ module Enumerable
     arr
   end
 
+  def my_inject(acc = 0)
+    self.my_each do |ele|
+      acc = yield(acc, ele)
+    end
+    acc
+  end
+
+  
+
 end
 
 
@@ -130,3 +139,8 @@ my_m = arr.my_map { |n| n * 2}
 print my_m
 puts
 puts '------------------------------'
+
+# Test my_inect
+puts 'Test my_inject'
+my_i = arr.my_inject { |acc, ele| acc + ele}
+puts my_i

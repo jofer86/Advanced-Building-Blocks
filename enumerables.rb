@@ -104,15 +104,9 @@ module Enumerable
 
 end
 
-
-
-
-
-
-
-
-
+# Test Case
 arr = [5, 8, 9, 4, 7, 6, 8, 10]
+
 # Test my_each
 puts 'Test my_each'
 puts  arr.my_each { |ele| puts ele * 2 }
@@ -161,7 +155,7 @@ print my_m
 puts
 puts '------------------------------'
 
-# Test my_inect
+# Test my_inject
 puts 'Test my_inject'
 my_i = arr.my_inject { |acc, ele| acc + ele}
 puts my_i

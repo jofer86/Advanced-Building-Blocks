@@ -5,17 +5,19 @@ end
 
 module Enumerable
   def my_each
+    arr = []
     for i in 0..self.length-1
-      yield self[i]
+      arr << yield(self[i])
     end
-    self
+    arr
   end
 
   def my_each_with_index
+    arr = []
     for i in 0..self.length-1
-      yield self[i], i
+      arr << yield(self[i], i)
     end
-    self
+    arr
   end
 
   def my_select
@@ -106,12 +108,14 @@ arr = [5, 8, 9, 4, 7, 6, 8, 10]
 
 # Test my_each
 puts 'Test my_each'
-puts  arr.my_each { |ele| puts ele * 2 }
+print  arr.my_each { |ele| ele * 2 }
+puts
 puts '------------------------------'
 
 # Test my_each_with_index
 puts 'Test my_each_with_index'
 arr.my_each_with_index { |ele, idx| puts "#{ele} is in index #{idx}" }
+puts
 puts '------------------------------'
 
 # Test my_select

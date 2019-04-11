@@ -5,11 +5,10 @@ end
 
 module Enumerable
   def my_each
-    arr = []
     for i in 0..self.length-1
-      arr << yield(self[i])
+      yield(self[i])
     end
-    arr
+    self
   end
 
   def my_each_with_index

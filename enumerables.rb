@@ -99,7 +99,7 @@ arr = [5, 8, 9, 4, 7, 6, 8, 10]
 
 # Test my_each
 puts 'Test my_each'
-print  arr.my_each { |ele| ele * 2 }
+print  arr.my_each { |ele| puts ele * 2 }
 puts
 puts '------------------------------'
 

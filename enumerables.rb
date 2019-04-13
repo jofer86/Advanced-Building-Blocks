@@ -1,8 +1,7 @@
-
-
 # Enumerable module.
 module Enumerable
   def my_each
+    return self if !block_given?
     for i in 0..self.length-1
       yield(self[i])
     end
@@ -10,6 +9,7 @@ module Enumerable
   end
 
   def my_each_with_index
+    return self if !block_given?
     arr = []
     for i in 0..self.length-1
       arr << yield(self[i], i)
@@ -18,6 +18,7 @@ module Enumerable
   end
 
   def my_select
+    return self if !block_given?
     arr = []
     my_each do |ele|
       if yield(ele) == true
@@ -28,6 +29,7 @@ module Enumerable
   end
 
   def my_all?
+    return self if !block_given?
     all = true
     my_each do |ele|
       if yield(ele) == false
@@ -38,6 +40,7 @@ module Enumerable
   end
 
   def my_any?
+    return self if !block_given?
     any = false
     my_each do |ele|
       if yield(ele) == true
@@ -48,6 +51,7 @@ module Enumerable
   end
 
   def my_none?
+    return self if !block_given?
     none = true
     my_each do |ele|
       if yield(ele) == true
@@ -58,6 +62,7 @@ module Enumerable
   end
 
   def my_count
+    return self if !block_given?
     count = 0
     my_each do |ele|
       if yield(ele) == true
@@ -78,6 +83,7 @@ module Enumerable
   end
 
   def my_inject(acc = self[0])
+    return self if !block_given?
     my_each do |ele|
       if ele == acc
         next

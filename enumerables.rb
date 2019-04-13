@@ -1,7 +1,5 @@
 
-$proc= proc do |n|
-  n * 2
-end
+
 # Enumerable module.
 module Enumerable
   def my_each
@@ -69,18 +67,12 @@ module Enumerable
     count
   end
 
-  def my_map
+  def my_map(proc = nil)
+    return self if proc.nil? && !block_given?
     arr = []
-    if $proc
-      my_each do |ele|
-        arr << $proc.call(ele)
-      end
-      return arr
-    end
-    if block_given?
-      my_each do |ele|
-        arr << yield(ele)
-      end
+    my_each do |ele|
+      value = proc.nil? ? yield(ele) : proc.call(ele)
+      arr << value
     end
     arr
   end
@@ -149,15 +141,21 @@ puts arr.my_count { |n| n == 8 }
 puts '------------------------------'
 
 # Test my_map
+proc1 = proc do |n|
+  n * 2
+end
 puts 'Test my_map'
-my_m = arr.my_map { |n| n * 4}
+my_m = arr.my_map { |n| n * 4 }
 print my_m
+puts
+my_m_p = arr.my_map(&proc1)
+print my_m_p
 puts
 puts '------------------------------'
 
 # Test my_inject
 puts 'Test my_inject'
-my_i = arr.my_inject { |acc, ele| acc + ele}
+my_i = arr.my_inject { |acc, ele| acc * ele}
 puts my_i
 puts multiply_els([2, 5, 4])
 

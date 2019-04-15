@@ -1,5 +1,5 @@
  # Ruby Advanced Building Blocks
-In this project I created a bubble sort method. And a module with methods that mimic the ones Ruby has.
+In this project I created a bubble sort method. And a module with enumerable methods that mimic the ones Ruby has.
 
 
 ## Made by:

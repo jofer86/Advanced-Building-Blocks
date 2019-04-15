@@ -30,35 +30,32 @@ module Enumerable
 
   def my_all?
     return self if !block_given?
-    all = true
     my_each do |ele|
       if yield(ele) == false
         return false
       end
     end
-    all
+    true
   end
 
   def my_any?
     return self if !block_given?
-    any = false
     my_each do |ele|
       if yield(ele) == true
         return true
       end
     end
-    any
+    false
   end
 
   def my_none?
     return self if !block_given?
-    none = true
     my_each do |ele|
       if yield(ele) == true
         return false
       end
     end
-    none
+    true
   end
 
   def my_count
